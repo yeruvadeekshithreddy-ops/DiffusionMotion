@@ -1,3 +1,14 @@
+---
+title: DiffusionMotion
+emoji: 🎬
+colorFrom: purple
+colorTo: blue
+sdk: gradio
+sdk_version: "6.0.1"
+app_file: app.py
+pinned: false
+---
+
 # 🎬 DiffusionMotion - AI-Assisted Animation
 
 AI-powered frame-by-frame animation generator using Stable Diffusion and ControlNet for temporal consistency.
