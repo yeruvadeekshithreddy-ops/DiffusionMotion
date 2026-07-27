@@ -3,6 +3,13 @@ Gradio Web Interface for DiffusionMotion
 AI-Assisted Animation Generator
 """
 
+try:
+    import spaces  # ZeroGPU support on HF Spaces — must be imported before torch
+    HF_SPACES = True
+except ImportError:
+    spaces = None
+    HF_SPACES = False
+
 import gradio as gr
 import torch
 from pathlib import Path
@@ -193,6 +200,13 @@ Saved to: `{gif_path}`
             import traceback
             traceback.print_exc()
             return None, f"**Error:** {str(e)}\n\nCheck the console for details."
+
+
+# Wrap generate_animation with @spaces.GPU on HF ZeroGPU, no-op locally
+if HF_SPACES:
+    AnimationApp.generate_animation = spaces.GPU(duration=300)(
+        AnimationApp.generate_animation
+    )
 
 
 # ------------------------------------------------------------------
