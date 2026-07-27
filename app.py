@@ -3,10 +3,6 @@ Gradio Web Interface for DiffusionMotion
 AI-Assisted Animation Generator
 """
 
-try:
-    import spaces  # must be imported before torch on HF Spaces
-except ImportError:
-    pass
 import gradio as gr
 import torch
 from pathlib import Path
@@ -220,15 +216,11 @@ def create_interface():
     app = AnimationApp()
 
     css = """
-    <style>
     .output-image { max-height: 500px; }
     .mode-panel { border: 1px solid #e0e0e0; border-radius: 8px; padding: 8px; }
-    </style>
     """
 
-    with gr.Blocks(title="DiffusionMotion - AI Animation") as demo:
-
-        gr.HTML(css)
+    with gr.Blocks(css=css, title="DiffusionMotion - AI Animation") as demo:
 
         gr.Markdown(
             """
@@ -415,6 +407,5 @@ if __name__ == "__main__":
         share=False,
         server_name="0.0.0.0",
         server_port=7860,
-        show_error=True,
-        ssr_mode=False
+        show_error=True
     )
