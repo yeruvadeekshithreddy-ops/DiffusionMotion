@@ -3,6 +3,10 @@ Gradio Web Interface for DiffusionMotion
 AI-Assisted Animation Generator
 """
 
+try:
+    import spaces  # must be imported before torch on HF Spaces
+except ImportError:
+    pass
 import gradio as gr
 import torch
 from pathlib import Path
