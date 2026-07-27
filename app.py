@@ -204,7 +204,7 @@ Saved to: `{gif_path}`
 
 # Wrap generate_animation with @spaces.GPU on HF ZeroGPU, no-op locally
 if HF_SPACES:
-    AnimationApp.generate_animation = spaces.GPU(duration=300)(
+    AnimationApp.generate_animation = spaces.GPU(duration=60)(
         AnimationApp.generate_animation
     )
 
@@ -270,9 +270,9 @@ def create_interface():
                 # ── Common settings ───────────────────────────────────
                 with gr.Accordion("Common Settings", open=True):
                     num_frames_slider = gr.Slider(
-                        minimum=2, maximum=32, value=16, step=1,
+                        minimum=2, maximum=16, value=4, step=1,
                         label="Number of Frames",
-                        info="More frames = longer animation, slower generation"
+                        info="Keep low (4-6) on ZeroGPU to stay within time limits"
                     )
                     guidance_slider = gr.Slider(
                         minimum=1.0, maximum=20.0, value=7.5, step=0.5,
