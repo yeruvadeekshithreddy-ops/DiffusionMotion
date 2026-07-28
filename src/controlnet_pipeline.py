@@ -20,8 +20,8 @@ class ControlNetFrameGenerator:
     
     def __init__(
         self,
-        model_id: str = "stabilityai/stable-diffusion-2-1-base",
-        controlnet_id: str = "lllyasviel/control_v11p_sd21_canny",
+        model_id: str = "Manojb/stable-diffusion-2-1-base",
+        controlnet_id: str = "thibaud/controlnet-sd21-canny-diffusers",
         device: str = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu",
         torch_dtype: torch.dtype = torch.float16 if torch.cuda.is_available() else torch.float32
     ):

@@ -17,7 +17,7 @@ class LatentInterpolator:
     
     def __init__(
         self,
-        model_id: str = "stabilityai/stable-diffusion-2-1-base",
+        model_id: str = "Manojb/stable-diffusion-2-1-base",
         device: str = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu",
         torch_dtype: torch.dtype = torch.float16 if torch.cuda.is_available() else torch.float32
     ):
